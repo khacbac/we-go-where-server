@@ -1,12 +1,21 @@
 const mongoose = require("mongoose");
 
 const dataSchema = new mongoose.Schema({
-  name: {
+  email: {
+    required: true,
+    type: String,
+    unique: true,
+  },
+  default_card: {
+    required: false,
+    type: String,
+  },
+  omiseId: {
     required: true,
     type: String,
   },
-  email: {
-    required: true,
+  description: {
+    required: false,
     type: String,
   },
 });

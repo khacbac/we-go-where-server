@@ -7,9 +7,16 @@ const getOmiseSecretKey = () => {
   return omiseKey;
 };
 
-const getOmiseRequestHeader = () => {
+const getOmisePublisKey = () => {
+  const omiseSecretKey = process.env.OMISE_PUBLIC_KEY;
+  const omiseKey = base64.encode(omiseSecretKey);
+  return omiseKey;
+};
+
+const getOmiseRequestHeader = (type) => {
+  const key = type === "public" ? getOmisePublisKey() : getOmiseSecretKey();
   return {
-    Authorization: "Basic " + getOmiseSecretKey(),
+    Authorization: "Basic " + key,
     "User-Agent": pkgConfig.name + "omise/" + pkgConfig.version,
     "Content-Type": "application/json",
   };
