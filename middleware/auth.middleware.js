@@ -5,7 +5,7 @@ const isAuth = async (req, res, next) => {
   // Lấy access token từ header
   const accessTokenFromHeader = req.headers.authorization;
   const bearer = accessTokenFromHeader?.split(" ");
-  const bearerToken = bearer[1];
+  const bearerToken = bearer?.[1];
   if (!bearerToken) {
     return res.status(401).send("access token not found!");
   }

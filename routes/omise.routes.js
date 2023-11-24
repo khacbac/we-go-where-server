@@ -66,4 +66,25 @@ router.post("/createToken", isAuth, async (req, res) => {
   }
 });
 
+// Attach a card
+router.patch("/attachACard", isAuth, async (req, res) => {
+  try {
+    const user = req.user;
+    // attach to customer
+    const attachCardJsonData = await fetch(
+      `${apiEndpoint}customers/${user.omiseId}`,
+      {
+        headers: getOmiseRequestHeader(),
+        method: "PATCH",
+        cache: "no-cache",
+        body: JSON.stringify({ card: req.body.id }),
+      }
+    );
+    const attachedCard = await attachCardJsonData.json();
+    res.json(attachedCard);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 module.exports = router;
