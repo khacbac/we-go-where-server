@@ -6,7 +6,7 @@ const userRoutes = require("./routes/user.routes");
 const omiseRoutes = require("./routes/omise.routes");
 const authRoutes = require("./routes/auth.routes");
 const mongoString = process.env.DATABASE_URL;
-
+console.log("mongoString : ", mongoString);
 mongoose.connect(mongoString);
 const database = mongoose.connection;
 
