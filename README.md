@@ -1,5 +1,8 @@
 # we-go-where-server
 
+## Cloud application hosting
+Render: https://render.com/
+
 ## Running the app
 
 1. Clone the repository:
