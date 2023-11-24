@@ -20,10 +20,6 @@ database.once("connected", () => {
 const app = express();
 
 app.use(express.json());
-app.use("/", (req, res) => {
-  console.log("Hi!!!");
-  res.send("Hi!!");
-});
 app.use("/api/user", userRoutes);
 app.use("/api/omise", omiseRoutes);
 app.use("/api/auth", authRoutes);
